@@ -1,24 +1,9 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import { PieChart } from 'react-feather'
-import { useDispatch, useSelector } from 'react-redux'
-import { setPhoenixVerticalNavbarCollapse } from '../../redux/Actions';
+
+import NavbarVerticalFooter from './NavbarVerticalFooter';
 
 function NavbarVertical({ styled }) {
-    const dispatch = useDispatch();
-    const selector = useSelector(state => state);
-    const isCollapsed = selector.phoenixIsNavbarVerticalCollapsed;
-    const handleChangeCollapse = () => {
-        dispatch(setPhoenixVerticalNavbarCollapse());
-        const element = document.documentElement.classList;
-        //   const element=  document.documentElement.classList.toggle('navbar-vertical-collapsed');
-        if (element.contains('navbar-vertical')) {
-            element.replace('navbar-vertical','navbar-vertical-collapsed')
-        }
-        else
-        {
-            element.replace('navbar-vertical-collapsed','navbar-vertical')
-        }
-    }
     return (
         <nav
             className={`navbar navbar-vertical navbar-expand-lg ${styled === 'darker' ? 'navbar-darker' : ''}`}
@@ -964,13 +949,7 @@ function NavbarVertical({ styled }) {
                     </ul>
                 </div>
             </div>
-            <div className="navbar-vertical-footer">
-                <button className="btn navbar-vertical-toggle border-0 fw-semi-bold w-100 white-space-nowrap d-flex align-items-center" onClick={handleChangeCollapse}>
-                    <span className="uil uil-left-arrow-to-left fs-0" />
-                    <span className="uil uil-arrow-from-right fs-0" />
-                    <span className="navbar-vertical-footer-text ms-2">Collapsed View</span>
-                </button>
-            </div>
+            <NavbarVerticalFooter />
         </nav>
 
     )

@@ -16,6 +16,16 @@ function Settings() {
     }
     const handleChangeNavbarPosition = (e) => {
         dispatch(setPhoenixNavbarPositionAction(e.target.value));
+
+        const element = document.documentElement.classList;
+        if (e.target.value === 'vertical') {
+
+            if (element.contains(`navbar-vertical-collapsed`)) {
+                console.log('ok')
+                element.remove(`navbar-vertical`);
+            }
+        }
+        // 
     }
     const handleChangeNavbarTopShape = (e) => {
         dispatch(setPhoenixNavbarTopShapeAction(e.target.value));

@@ -77,6 +77,28 @@ export const setPhoenixNavbarTopShapeAction = (action) => {
         dispatch(setPhoenixNavbarTopShape(action));
     };
 }
+export const setPhoenixVerticalNavbarCollapseAction = () => {
+    return (dispatch, getState) => {
+        // Toggle the phoenixIsNavbarVerticalCollapsed state directly in the Redux store
+        dispatch(setPhoenixVerticalNavbarCollapse());
+
+        const state = getState(); // Get the current Redux state
+        const isCollapsed = state.phoenixIsNavbarVerticalCollapsed;
+        const navbarType = state.phoenixNavbarPosition;
+
+        // Handle classList toggling based on the phoenixIsNavbarVerticalCollapsed state
+        const element = document.documentElement.classList;
+        element.remove('navbar-vertical', 'navbar-vertical-collapsed', 'navbar-combo');
+        if (isCollapsed) {
+            if (navbarType === 'combo') {
+                element.add('navbar-combo')
+            }
+            element.add('navbar-vertical-collapsed');
+        } else {
+            element.add(`navbar-${navbarType}`);
+        }
+    };
+};
 
 // export const setPhoenixIsRTLAction = (state) => {
 //     return (dispatch) => {

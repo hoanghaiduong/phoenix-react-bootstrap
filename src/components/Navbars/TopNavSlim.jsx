@@ -1,8 +1,9 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
+import ThemeSwitcher from './ThemeSwitcher';
 
 function TopNavSlim({ styled }) {
- 
+
 
   return (
     <nav
@@ -32,33 +33,7 @@ function TopNavSlim({ styled }) {
         <ul className="navbar-nav navbar-nav-icons flex-row">
           <li className="nav-item">
             <div className="theme-control-toggle fa-ion-wait pe-2 theme-control-toggle-slim">
-              <input
-                className="form-check-input ms-0 theme-control-toggle-input"
-                id="themeControlToggle"
-                type="checkbox"
-                data-theme-control="phoenixTheme"
-                defaultValue="dark"
-              />
-              <label
-                className="mb-0 theme-control-toggle-label theme-control-toggle-light"
-                htmlFor="themeControlToggle"
-                data-bs-toggle="tooltip"
-                data-bs-placement="left"
-                title="Switch theme"
-              >
-                <span className="icon me-1 d-none d-sm-block" data-feather="moon" />
-                <span className="fs--1 fw-bold">Dark</span>
-              </label>
-              <label
-                className="mb-0 theme-control-toggle-label theme-control-toggle-dark"
-                htmlFor="themeControlToggle"
-                data-bs-toggle="tooltip"
-                data-bs-placement="left"
-                title="Switch theme"
-              >
-                <span className="icon me-1 d-none d-sm-block" data-feather="sun" />
-                <span className="fs--1 fw-bold">Light</span>
-              </label>
+              <ThemeSwitcher />
             </div>
           </li>
           <li className="nav-item">

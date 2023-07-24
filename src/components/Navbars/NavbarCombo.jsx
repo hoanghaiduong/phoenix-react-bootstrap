@@ -1,6 +1,7 @@
 import React from 'react'
+import ThemeSwitcher from './ThemeSwitcher'
 
-function NavbarCombo({styled}) {
+function NavbarCombo({ styled }) {
     return (
         <nav
             className={`navbar navbar-top fixed-top navbar-expand-lg ${styled === 'darker' ? 'navbar-darker' : ''}`}
@@ -1986,31 +1987,7 @@ function NavbarCombo({styled}) {
             <ul className="navbar-nav navbar-nav-icons flex-row">
                 <li className="nav-item">
                     <div className="theme-control-toggle fa-icon-wait px-2">
-                        <input
-                            className="form-check-input ms-0 theme-control-toggle-input"
-                            type="checkbox"
-                            data-theme-control="phoenixTheme"
-                            defaultValue="dark"
-                            id="themeControlToggle"
-                        />
-                        <label
-                            className="mb-0 theme-control-toggle-label theme-control-toggle-light"
-                            htmlFor="themeControlToggle"
-                            data-bs-toggle="tooltip"
-                            data-bs-placement="left"
-                            title="Switch theme"
-                        >
-                            <span className="icon" data-feather="moon" />
-                        </label>
-                        <label
-                            className="mb-0 theme-control-toggle-label theme-control-toggle-dark"
-                            htmlFor="themeControlToggle"
-                            data-bs-toggle="tooltip"
-                            data-bs-placement="left"
-                            title="Switch theme"
-                        >
-                            <span className="icon" data-feather="sun" />
-                        </label>
+                        <ThemeSwitcher />
                     </div>
                 </li>
                 <li className="nav-item">
