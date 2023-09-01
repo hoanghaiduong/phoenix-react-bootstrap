@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { setPhoenixNavbarPositionAction, setPhoenixNavbarTopShapeAction, setPhoenixNavbarTopStyleAction, setPhoenixNavbarVerticalStyleAction, setPhoenixSupportChat, setPhoenixThemeAction } from '../redux/Actions';
+import { setPhoenixIsRTLAction, setPhoenixNavbarPositionAction, setPhoenixNavbarTopShapeAction, setPhoenixNavbarTopStyleAction, setPhoenixNavbarVerticalStyleAction, setPhoenixSupportChat, setPhoenixThemeAction } from '../redux/Actions';
 
 function Settings() {
     const dispatch = useDispatch();
     const selector = useSelector(state => state);
-    const { phoenixNavbarPosition, phoenixNavbarTopShape, phoenixNavbarTopStyle, phoenixNavbarVerticalStyle, phoenixSupportChat } = selector;
+    const { phoenixNavbarPosition, phoenixNavbarTopShape, phoenixNavbarTopStyle, phoenixNavbarVerticalStyle, phoenixSupportChat, phoenixIsRTL, phoenixTheme } = selector;
 
     const handleChangeHorizontalStyle = (e) => {
         dispatch(setPhoenixNavbarTopStyleAction(e.target.value));
@@ -33,6 +33,25 @@ function Settings() {
     const handleChangeSupportChat = () => {
         dispatch(setPhoenixSupportChat());
     }
+    const handleChangeRTL = () => {
+        dispatch(setPhoenixIsRTLAction());
+        // const isRTL = localStorage.getItem('phoenixIsRTL') === 'true';
+        // localStorage.setItem('phoenixIsRTL', String(!isRTL));
+        // window.location.reload();
+    };
+    const handleChangeTheme = (e) => {
+        dispatch(setPhoenixThemeAction(e.target.value));
+    }
+
+    useEffect(() => {
+        if (phoenixTheme === 'dark') {
+
+            document.documentElement.classList.add('dark');
+        }
+        else {
+            document.documentElement.classList.remove('dark')
+        }
+    }, [phoenixTheme]);
     return (
         <>
             <div
@@ -79,9 +98,10 @@ function Settings() {
                                     id="themeSwitcherLight"
                                     name="theme-color"
                                     type="radio"
-                                    defaultValue={"light"}
-                                    defaultChecked={localStorage.getItem('phoenixTheme') === "light"}
-                                    data-theme-control="phoenixTheme"
+                                    value={"light"}
+                                    checked={phoenixTheme === 'light'}
+                                    onChange={handleChangeTheme}
+
                                 />
                                 <label
                                     className="btn d-inline-block btn-navbar-style fs--1"
@@ -104,9 +124,9 @@ function Settings() {
                                     id="themeSwitcherDark"
                                     name="theme-color"
                                     type="radio"
-                                    defaultValue="dark"
-                                    defaultChecked={localStorage.getItem('phoenixTheme') === 'dark'}
-                                    data-theme-control="phoenixTheme"
+                                    value="dark"
+                                    checked={phoenixTheme === 'dark'}
+                                    onChange={handleChangeTheme}
                                 />
                                 <label
                                     className="btn d-inline-block btn-navbar-style fs--1"
@@ -132,12 +152,8 @@ function Settings() {
                                 <input
                                     className="form-check-input ms-auto"
                                     type="checkbox"
-                                    defaultChecked={localStorage.getItem('phoenixIsRTL') === 'true'}
-                                    onChange={() => {
-                                        const isRTL = localStorage.getItem('phoenixIsRTL') === 'true';
-                                        localStorage.setItem('phoenixIsRTL', String(!isRTL));
-                                        window.location.reload();
-                                    }}
+                                    checked={phoenixIsRTL}
+                                    onChange={handleChangeRTL}
                                 />
 
                             </div>

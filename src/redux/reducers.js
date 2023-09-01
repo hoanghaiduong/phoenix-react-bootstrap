@@ -1,4 +1,4 @@
-import { SET_PHOENIX_IS_NAVBAR_VERTICAL_COLLAPSED, SET_PHOENIX_IS_RTL, SET_PHOENIX_NAVBAR_POSITION, SET_PHOENIX_NAVBAR_TOP_SHAPE, SET_PHOENIX_NAVBAR_TOP_STYLE, SET_PHOENIX_NAVBAR_VERTICAL_STYLE, SET_PHOENIX_SUPPORT_CHAT } from "./ActionTypes";
+import { SET_PHOENIX_IS_NAVBAR_VERTICAL_COLLAPSED, SET_PHOENIX_IS_RTL, SET_PHOENIX_NAVBAR_POSITION, SET_PHOENIX_NAVBAR_TOP_SHAPE, SET_PHOENIX_NAVBAR_TOP_STYLE, SET_PHOENIX_NAVBAR_VERTICAL_STYLE, SET_PHOENIX_SUPPORT_CHAT, SET_PHOENIX_THEME } from "./ActionTypes";
 
 // redux/reducers/navbarReducer.js
 const initialState = {
@@ -8,6 +8,7 @@ const initialState = {
     phoenixNavbarTopStyle: 'default',
     phoenixIsNavbarVerticalCollapsed: false,
     phoenixSupportChat: false,
+    phoenixTheme: 'light',
     phoenixIsRTL: false,
 };
 const rootReducers = (state = initialState, action) => {
@@ -36,12 +37,7 @@ const rootReducers = (state = initialState, action) => {
                 phoenixNavbarPosition: action.payload
             };
         case SET_PHOENIX_NAVBAR_TOP_SHAPE:
-            // if (state.phoenixNavbarPosition === 'dual-nav') {
-            //     return {
-            //         ...state,
-            //         phoenixNavbarTopShape: 'default'
-            //     };
-            // }
+
             return {
                 ...state,
                 phoenixNavbarTopShape: action.payload
@@ -61,12 +57,17 @@ const rootReducers = (state = initialState, action) => {
                 ...state,
                 phoenixIsRTL: !state.phoenixIsRTL
             }
-            break;
+
         case SET_PHOENIX_SUPPORT_CHAT:
             return {
                 ...state,
                 phoenixSupportChat: !state.phoenixSupportChat
             };
+        case SET_PHOENIX_THEME:
+            return {
+                ...state,
+                phoenixTheme: action.payload
+            }
         default:
             return state;
     }

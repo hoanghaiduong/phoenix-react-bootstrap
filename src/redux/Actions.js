@@ -1,4 +1,4 @@
-import { SET_PHOENIX_IS_NAVBAR_VERTICAL_COLLAPSED, SET_PHOENIX_IS_RTL, SET_PHOENIX_NAVBAR_POSITION, SET_PHOENIX_NAVBAR_TOP_SHAPE, SET_PHOENIX_NAVBAR_TOP_STYLE, SET_PHOENIX_NAVBAR_VERTICAL_STYLE, SET_PHOENIX_SUPPORT_CHAT, } from "./ActionTypes";
+import { SET_PHOENIX_IS_NAVBAR_VERTICAL_COLLAPSED, SET_PHOENIX_IS_RTL, SET_PHOENIX_NAVBAR_POSITION, SET_PHOENIX_NAVBAR_TOP_SHAPE, SET_PHOENIX_NAVBAR_TOP_STYLE, SET_PHOENIX_NAVBAR_VERTICAL_STYLE, SET_PHOENIX_SUPPORT_CHAT, SET_PHOENIX_THEME, } from "./ActionTypes";
 
 // Action creators
 export const setPhoenixNavbarVerticalStyle = (style) => ({
@@ -14,7 +14,10 @@ export const setPhoenixVerticalNavbarCollapse = () => ({
 export const setPhoenixIsRTL = () => ({
     type: SET_PHOENIX_IS_RTL,
 });
-
+export const setPhoenixTheme = (action) => ({
+    type: SET_PHOENIX_THEME,
+    payload: action
+});
 export const setPhoenixNavbarPosition = (position) => ({
     type: SET_PHOENIX_NAVBAR_POSITION,
     payload: position,
@@ -100,10 +103,33 @@ export const setPhoenixVerticalNavbarCollapseAction = () => {
     };
 };
 
-// export const setPhoenixIsRTLAction = (state) => {
-//     return (dispatch) => {
-//         // Thực hiện action setPhoenixTheme để thay đổi Redux store
-//         dispatch(setPhoenixIsRTL());
-//         const element=document.documentElement.classList;
-//     };
-// }
+export const setPhoenixIsRTLAction = () => {
+    return (dispatch, getState) => {
+        dispatch(setPhoenixIsRTL());
+        const state = getState(); // Get the current Redux state
+        const { phoenixIsRTL } = state;
+        // Thực hiện action setPhoenixTheme để thay đổi Redux store
+        const linkDefault = document.getElementById('style-default');
+        const linkRTL = document.getElementById('style-rtl');
+
+        if (phoenixIsRTL) {
+            linkDefault.setAttribute('disabled', true);
+            linkRTL.setAttribute('disabled', false);
+            document.querySelector('html').setAttribute('dir', 'rtl');
+        } else {
+            linkDefault.setAttribute('disabled', false);
+            linkRTL.setAttribute('disabled', true);
+            document.querySelector('html').setAttribute('dir', 'ltr');
+        }
+    };
+}
+export const setPhoenixThemeAction = (action) => {
+    return (dispatch) => {
+        dispatch(setPhoenixTheme(action));
+        var element = document.documentElement.classList;
+        element.remove('dark')
+        if (action === "dark") {
+            element.add('dark');
+        }
+    }
+}

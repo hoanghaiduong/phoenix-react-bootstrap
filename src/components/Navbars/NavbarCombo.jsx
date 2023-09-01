@@ -1,5 +1,6 @@
 import React from 'react'
 import ThemeSwitcher from './ThemeSwitcher'
+import { Bell, Search } from 'react-feather'
 
 function NavbarCombo({ styled }) {
     return (
@@ -1997,10 +1998,7 @@ function NavbarCombo({ styled }) {
                         data-bs-toggle="modal"
                         data-bs-target="#searchBoxModal"
                     >
-                        <span
-                            data-feather="search"
-                            style={{ height: 19, width: 19, marginBottom: 2 }}
-                        />
+                        <Search size={19} />
                     </a>
                 </li>
                 <li className="nav-item dropdown">
@@ -2013,7 +2011,7 @@ function NavbarCombo({ styled }) {
                         aria-expanded="false"
                         data-bs-auto-close="outside"
                     >
-                        <span data-feather="bell" style={{ height: 20, width: 20 }} />
+                        <Bell size={19} />
                     </a>
                     <div
                         className="dropdown-menu dropdown-menu-end notification-dropdown-menu py-0 shadow border border-300 navbar-dropdown-caret"

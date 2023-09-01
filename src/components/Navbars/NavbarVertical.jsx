@@ -1,5 +1,5 @@
 import React from 'react'
-import { PieChart } from 'react-feather'
+import { PieChart, ShoppingCart } from 'react-feather'
 
 import NavbarVerticalFooter from './NavbarVerticalFooter';
 
@@ -103,7 +103,7 @@ function NavbarVertical({ styled }) {
                                             <span className="fas fa-caret-right" />
                                         </div>
                                         <span className="nav-link-icon">
-                                            <span data-feather="shopping-cart" />
+                                            <ShoppingCart size={14} />
                                         </span>
                                         <span className="nav-link-text">E commerce</span>
                                     </div>
