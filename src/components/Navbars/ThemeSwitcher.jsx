@@ -15,18 +15,20 @@ const ThemeSwitcher = () => {
     };
 
     return (
-        <label className="mb-0 theme-control-toggle-label theme-control-toggle-light" htmlFor="themeControlToggle">
-            <input
-                className="form-check-input ms-0 theme-control-toggle-input"
-                type="checkbox"
-                value={phoenixTheme === 'light' ? 'dark' : 'light'}
-                onChange={handleChangeTheme}
-                id="themeControlToggle"
-            />
-            <span data-bs-toggle="tooltip" data-bs-placement="left" title="Switch theme">
-                {phoenixTheme === 'dark' ? <Moon size={19} /> : <Sun size={16} />}
-            </span>
-        </label>
+        <div className="theme-control-toggle fa-icon-wait">
+            <label className="mb-0 theme-control-toggle-label theme-control-toggle-light" htmlFor="themeControlToggle">
+                <input
+                    className="form-check-input ms-0 theme-control-toggle-input"
+                    type="checkbox"
+                    value={phoenixTheme === 'light' ? 'dark' : 'light'}
+                    onChange={handleChangeTheme}
+                    id="themeControlToggle"
+                />
+                <span data-bs-toggle="tooltip" data-bs-placement="left" title="Switch theme">
+                    {phoenixTheme === 'dark' ? <Moon size={16} /> : <Sun size={16} />}
+                </span>
+            </label>
+        </div>
     );
 };
 
