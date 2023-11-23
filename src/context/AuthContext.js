@@ -13,6 +13,7 @@ import {
 } from "firebase/auth";
 import axios from "axios";
 import { auth } from "../config/InitialFirebase";
+import { API_PATH } from "../pages/authentication/ApiPath";
 
 const AuthContext = createContext({
   currentUser: null,
@@ -22,9 +23,11 @@ const AuthContext = createContext({
   logout: () => Promise,
   forgotPassword: () => Promise,
   resetPassword: () => Promise,
+  createOrLogin: () => Promise,
 });
 
 export const useAuth = () => useContext(AuthContext);
+
 
 export default function AuthContextProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
@@ -47,6 +50,7 @@ export default function AuthContextProvider({ children }) {
   //   }
   // }, [currentUser])
 
+  
   const createUserSQL = async (e) => {
     const email = e.email;
     const uid = e.uid;
@@ -55,16 +59,49 @@ export default function AuthContextProvider({ children }) {
     const photoURL = e.photoURL;
     // (await axios.post("http://103.186.65.172:8888/firebase/signup")).headers;
   };
+  const createOrLogin = async (authorization, navigate) => {
+    let config = {
+      method: 'post',
+      maxBodyLength: Infinity,
+      url: `${API_PATH}/api/auth`,
+      headers: { 
+        'accept': '*/*', 
+        'Authorization': `Bearer ${authorization}`
+      }
+    };
 
-  function login(email, password) {
-    return signInWithEmailAndPassword(auth, email, password).then((result) => {
-      // createUserSQL(result.user);
-      console.log(result);
+    axios.request(config)
+    .then((response) => {
+      console.log(JSON.stringify(response.data));
+      console.log(response.data.role.name);
+      switch(response.data.role.name)
+      {
+        case "admin":
+          navigate("/admin/user");
+          return
+        case "restaurant":
+          navigate("/restaurant/management")
+          return
+        case "user":
+          navigate("/")
+          return
+      }
+      // if(response.data.role.name == "admin")
+      // {
+      //   navigate('/admin');
+      // }
+    })
+    .catch((error) => {
+      console.log(error);
     });
+
+  }
+  function login(email, password) {
+    return signInWithEmailAndPassword(auth, email, password)
   }
 
   function register(email, password) {
-    return createUserWithEmailAndPassword(auth, email, password);
+    return createUserWithEmailAndPassword(auth, email, password)
   }
 
   function forgotPassword(email) {
@@ -83,9 +120,7 @@ export default function AuthContextProvider({ children }) {
 
   function signInWithGoogle() {
     const provider = new GoogleAuthProvider();
-    return signInWithPopup(auth, provider).then((result) => {
-      createUserSQL(result.user);
-    });
+    return signInWithPopup(auth, provider)
   }
 
   const value = {
@@ -96,6 +131,7 @@ export default function AuthContextProvider({ children }) {
     logout,
     forgotPassword,
     resetPassword,
+    createOrLogin,
   };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

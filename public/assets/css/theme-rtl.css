@@ -18150,7 +18150,8 @@ textarea.form-control.is-invalid {
   }
 
   .d-lg-block {
-    display: block !important;
+    /* display: block !important; */
+    display: block;
   }
 
   .d-lg-grid {
@@ -37556,7 +37557,7 @@ html:not(.navbar-vertical-collapsed) .navbar-vertical .firefox .navbar-vibrant .
 .theme-wizard .nav-item:not(.theme-wizard .nav-item:last-child) .nav-link:before {
   content: "";
   height: 2px;
-  width: 100%;
+  width: 105%;
   position: absolute;
   right: 3%;
   top: 48%;

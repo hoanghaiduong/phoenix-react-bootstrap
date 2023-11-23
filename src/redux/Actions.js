@@ -1,4 +1,5 @@
-import { SET_PHOENIX_IS_NAVBAR_VERTICAL_COLLAPSED, SET_PHOENIX_IS_RTL, SET_PHOENIX_NAVBAR_POSITION, SET_PHOENIX_NAVBAR_TOP_SHAPE, SET_PHOENIX_NAVBAR_TOP_STYLE, SET_PHOENIX_NAVBAR_VERTICAL_STYLE, SET_PHOENIX_SUPPORT_CHAT, SET_PHOENIX_THEME, } from "./ActionTypes";
+import { SET_PHOENIX_IS_NAVBAR_VERTICAL_COLLAPSED, SET_PHOENIX_IS_RTL, SET_PHOENIX_NAVBAR_POSITION, SET_PHOENIX_NAVBAR_TOP_SHAPE, SET_PHOENIX_NAVBAR_TOP_STYLE, SET_PHOENIX_NAVBAR_VERTICAL_STYLE, SET_PHOENIX_SUPPORT_CHAT, SET_PHOENIX_THEME, SET_USER_INFO, } from "./ActionTypes";
+
 
 // Action creators
 export const setPhoenixNavbarVerticalStyle = (style) => ({
@@ -33,6 +34,10 @@ export const setPhoenixNavbarTopStyle = (style) => ({
     payload: style,
 });
 
+export const setUserInfo = (userInfo) => ({
+    type: SET_USER_INFO,
+    payload: userInfo
+});
 
 export const setPhoenixNavbarVerticalStyleAction = (action) => {
     return (dispatch) => {
@@ -132,4 +137,9 @@ export const setPhoenixThemeAction = (action) => {
             element.add('dark');
         }
     }
+}
+export const setUserInfoAction = (action) => {
+    return (dispatch) => {
+        dispatch(setUserInfo(action));
+    };
 }

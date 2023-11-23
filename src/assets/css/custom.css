@@ -1,0 +1,29 @@
+.content{
+    margin-left: 270px;
+}
+#wizard-box{
+    margin-top: 70px;
+    margin-left: 500px;
+    margin-right: 500px;
+}
+
+@media only screen and (max-width: 990px) {
+    .content{
+        margin-left: 0px;
+    }
+    
+}
+
+
+@media only screen and (max-width: 1800px) {
+    #wizard-box{
+        margin-left: 300px;
+        margin-right: 300px;
+    }
+    @media only screen and (max-width: 1300px) {
+        #wizard-box{
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+}

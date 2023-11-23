@@ -14,16 +14,16 @@ function AuthRightCard({ title, description, imgSrc, children }) {
             <div className="d-flex align-items-center fw-bolder fs-5 d-inline-block">
               <img
                 src={imgSrc}//../../../assets/img/icons/logo.png
-                alt="phoenix"
-                width={58}
+                // alt="phoenix"
+                width={198}
               />
             </div>
           </a>
           <h3 className={`text-1000`}>{title}</h3>
           <p className="text-700">{description}</p>
         </div>
-        <GoogleButton buttonText={"Đăng Nhập Với Google"} />
-        <FacebookButton buttonText={"Đăng Nhập Với FaceBook"} />
+        <GoogleButton buttonText={title + " Với Google"} />
+        <FacebookButton buttonText={title + " Với FaceBook"} />
         {children}
       </div>
     </div>

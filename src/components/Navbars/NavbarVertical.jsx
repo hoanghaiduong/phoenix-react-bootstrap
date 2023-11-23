@@ -1,9 +1,10 @@
 import React from 'react'
-import { PieChart, ShoppingCart } from 'react-feather'
+import { Home, PieChart, ShoppingCart, User } from 'react-feather'
 
 import NavbarVerticalFooter from './NavbarVerticalFooter';
+import { Link } from 'react-router-dom';
 
-function NavbarVertical({ styled }) {
+function NavbarVertical({ styled, target }) {
     return (
         <nav
             className={`navbar navbar-vertical navbar-expand-lg ${styled === 'darker' ? 'navbar-darker' : ''}`}
@@ -13,407 +14,53 @@ function NavbarVertical({ styled }) {
                 <div className="navbar-vertical-content">
                     <ul className="navbar-nav flex-column" id="nav barVerticalNav">
                         <li className="nav-item">
+                        <p className="navbar-vertical-label">User</p>
+                            <hr className="navbar-vertical-line" />
                             {/* parent pages*/}
                             <div className="nav-item-wrapper">
-                                <a
+                                <Link
                                     className="nav-link dropdown-indicator label-1"
-                                    href="#home"
-                                    role="button"
-                                    data-bs-toggle="collapse"
-                                    aria-expanded="true"
-                                    aria-controls="home"
+                                    to="/admin/user"
+                                    style={{fontSize: '1.2em'}}
                                 >
-                                    <div className="d-flex align-items-center">
-                                        <div className="dropdown-indicator-icon">
+                                    <div className="d-flex align-items-center" style={target=="users"?{color: 'blue'} : {}}> 
+                                        {/* <div className="dropdown-indicator-icon">
                                             <span className="fas fa-caret-right" />
-                                        </div>
+                                        </div> */}
                                         <span className="nav-link-icon">
-                                            <PieChart size={16} />
+                                            <User size={18} />
                                         </span>
-                                        <span className="nav-link-text">Home</span>
+                                        <span className="nav-link-text">Users</span>
                                     </div>
-                                </a>
-                                <div className="parent-wrapper label-1">
-                                    <ul
-                                        className="nav collapse parent show"
-                                        data-bs-parent="#navbarVerticalCollapse"
-                                        id="home"
-                                    >
-                                        <li className="collapsed-nav-item-title d-none">Home</li>
-                                        <li className="nav-item">
-                                            <a
-                                                className="nav-link active"
-                                                href="index.html"
-                                                data-bs-toggle=""
-                                                aria-expanded="false"
-                                            >
-                                                <div className="d-flex align-items-center">
-                                                    <span className="nav-link-text">E commerce</span>
-                                                </div>
-                                            </a>
-                                            {/* more inner pages*/}
-                                        </li>
-                                        <li className="nav-item">
-                                            <a
-                                                className="nav-link"
-                                                href="dashboard/project-management.html"
-                                                data-bs-toggle=""
-                                                aria-expanded="false"
-                                            >
-                                                <div className="d-flex align-items-center">
-                                                    <span className="nav-link-text">Project management</span>
-                                                </div>
-                                            </a>
-                                            {/* more inner pages*/}
-                                        </li>
-
-                                        <li className="nav-item">
-                                            <a
-                                                className="nav-link"
-                                                href="apps/social/feed.html"
-                                                data-bs-toggle=""
-                                                aria-expanded="false"
-                                            >
-                                                <div className="d-flex align-items-center">
-                                                    <span className="nav-link-text">Social feed</span>
-                                                </div>
-                                            </a>
-                                            {/* more inner pages*/}
-                                        </li>
-                                    </ul>
-                                </div>
+                                </Link>
+                                
                             </div>
                         </li>
                         <li className="nav-item">
                             {/* label*/}
-                            <p className="navbar-vertical-label">Apps</p>
+                            <p className="navbar-vertical-label">Restaurant</p>
                             <hr className="navbar-vertical-line" />
                             {/* parent pages*/}
                             <div className="nav-item-wrapper">
-                                <a
+                                <Link
                                     className="nav-link dropdown-indicator label-1"
-                                    href="#e-commerce"
-                                    role="button"
-                                    data-bs-toggle="collapse"
-                                    aria-expanded="false"
-                                    aria-controls="e-commerce"
+                                    to="/admin/restaurant"
+                                    style={{fontSize: '1.2em'}}
                                 >
-                                    <div className="d-flex align-items-center">
-                                        <div className="dropdown-indicator-icon">
+                                    <div className="d-flex align-items-center" style={target=="restaurants"?{color: 'blue'} : {}}>
+                                        {/* <div className="dropdown-indicator-icon">
                                             <span className="fas fa-caret-right" />
-                                        </div>
+                                        </div> */}
                                         <span className="nav-link-icon">
-                                            <ShoppingCart size={14} />
+                                            <Home size={18} />
                                         </span>
-                                        <span className="nav-link-text">E commerce</span>
+                                        <span className="nav-link-text">Restaurants</span>
                                     </div>
-                                </a>
-                                <div className="parent-wrapper label-1">
-                                    <ul
-                                        className="nav collapse parent"
-                                        data-bs-parent="#navbarVerticalCollapse"
-                                        id="e-commerce"
-                                    >
-                                        <li className="collapsed-nav-item-title d-none">E commerce</li>
-                                        <li className="nav-item">
-                                            <a
-                                                className="nav-link dropdown-indicator"
-                                                href="#admin"
-                                                data-bs-toggle="collapse"
-                                                aria-expanded="true"
-                                                aria-controls="e-commerce"
-                                            >
-                                                <div className="d-flex align-items-center">
-                                                    <div className="dropdown-indicator-icon">
-                                                        <span className="fas fa-caret-right" />
-                                                    </div>
-                                                    <span className="nav-link-text">Admin</span>
-                                                </div>
-                                            </a>
-                                            {/* more inner pages*/}
-                                            <div className="parent-wrapper">
-                                                <ul
-                                                    className="nav collapse parent show"
-                                                    data-bs-parent="#e-commerce"
-                                                    id="admin"
-                                                >
-                                                    <li className="nav-item">
-                                                        <a
-                                                            className="nav-link"
-                                                            href="apps/e-commerce/admin/add-product.html"
-                                                            data-bs-toggle=""
-                                                            aria-expanded="false"
-                                                        >
-                                                            <div className="d-flex align-items-center">
-                                                                <span className="nav-link-text">Add product</span>
-                                                            </div>
-                                                        </a>
-                                                        {/* more inner pages*/}
-                                                    </li>
-                                                    <li className="nav-item">
-                                                        <a
-                                                            className="nav-link"
-                                                            href="apps/e-commerce/admin/products.html"
-                                                            data-bs-toggle=""
-                                                            aria-expanded="false"
-                                                        >
-                                                            <div className="d-flex align-items-center">
-                                                                <span className="nav-link-text">Products</span>
-                                                            </div>
-                                                        </a>
-                                                        {/* more inner pages*/}
-                                                    </li>
-                                                    <li className="nav-item">
-                                                        <a
-                                                            className="nav-link"
-                                                            href="apps/e-commerce/admin/customers.html"
-                                                            data-bs-toggle=""
-                                                            aria-expanded="false"
-                                                        >
-                                                            <div className="d-flex align-items-center">
-                                                                <span className="nav-link-text">Customers</span>
-                                                            </div>
-                                                        </a>
-                                                        {/* more inner pages*/}
-                                                    </li>
-                                                    <li className="nav-item">
-                                                        <a
-                                                            className="nav-link"
-                                                            href="apps/e-commerce/admin/customer-details.html"
-                                                            data-bs-toggle=""
-                                                            aria-expanded="false"
-                                                        >
-                                                            <div className="d-flex align-items-center">
-                                                                <span className="nav-link-text">
-                                                                    Customer details
-                                                                </span>
-                                                            </div>
-                                                        </a>
-                                                        {/* more inner pages*/}
-                                                    </li>
-                                                    <li className="nav-item">
-                                                        <a
-                                                            className="nav-link"
-                                                            href="apps/e-commerce/admin/orders.html"
-                                                            data-bs-toggle=""
-                                                            aria-expanded="false"
-                                                        >
-                                                            <div className="d-flex align-items-center">
-                                                                <span className="nav-link-text">Orders</span>
-                                                            </div>
-                                                        </a>
-                                                        {/* more inner pages*/}
-                                                    </li>
-                                                    <li className="nav-item">
-                                                        <a
-                                                            className="nav-link"
-                                                            href="apps/e-commerce/admin/order-details.html"
-                                                            data-bs-toggle=""
-                                                            aria-expanded="false"
-                                                        >
-                                                            <div className="d-flex align-items-center">
-                                                                <span className="nav-link-text">Order details</span>
-                                                            </div>
-                                                        </a>
-                                                        {/* more inner pages*/}
-                                                    </li>
-                                                    <li className="nav-item">
-                                                        <a
-                                                            className="nav-link"
-                                                            href="apps/e-commerce/admin/refund.html"
-                                                            data-bs-toggle=""
-                                                            aria-expanded="false"
-                                                        >
-                                                            <div className="d-flex align-items-center">
-                                                                <span className="nav-link-text">Refund</span>
-                                                            </div>
-                                                        </a>
-                                                        {/* more inner pages*/}
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <li className="nav-item">
-                                            <a
-                                                className="nav-link dropdown-indicator"
-                                                href="#customer"
-                                                data-bs-toggle="collapse"
-                                                aria-expanded="true"
-                                                aria-controls="e-commerce"
-                                            >
-                                                <div className="d-flex align-items-center">
-                                                    <div className="dropdown-indicator-icon">
-                                                        <span className="fas fa-caret-right" />
-                                                    </div>
-                                                    <span className="nav-link-text">Customer</span>
-                                                </div>
-                                            </a>
-                                            {/* more inner pages*/}
-                                            <div className="parent-wrapper">
-                                                <ul
-                                                    className="nav collapse parent show"
-                                                    data-bs-parent="#e-commerce"
-                                                    id="customer"
-                                                >
-                                                    <li className="nav-item">
-                                                        <a
-                                                            className="nav-link"
-                                                            href="apps/e-commerce/landing/homepage.html"
-                                                            data-bs-toggle=""
-                                                            aria-expanded="false"
-                                                        >
-                                                            <div className="d-flex align-items-center">
-                                                                <span className="nav-link-text">Homepage</span>
-                                                            </div>
-                                                        </a>
-                                                        {/* more inner pages*/}
-                                                    </li>
-                                                    <li className="nav-item">
-                                                        <a
-                                                            className="nav-link"
-                                                            href="apps/e-commerce/landing/product-details.html"
-                                                            data-bs-toggle=""
-                                                            aria-expanded="false"
-                                                        >
-                                                            <div className="d-flex align-items-center">
-                                                                <span className="nav-link-text">
-                                                                    Product details
-                                                                </span>
-                                                            </div>
-                                                        </a>
-                                                        {/* more inner pages*/}
-                                                    </li>
-                                                    <li className="nav-item">
-                                                        <a
-                                                            className="nav-link"
-                                                            href="apps/e-commerce/landing/products-filter.html"
-                                                            data-bs-toggle=""
-                                                            aria-expanded="false"
-                                                        >
-                                                            <div className="d-flex align-items-center">
-                                                                <span className="nav-link-text">
-                                                                    Products filter
-                                                                </span>
-                                                            </div>
-                                                        </a>
-                                                        {/* more inner pages*/}
-                                                    </li>
-                                                    <li className="nav-item">
-                                                        <a
-                                                            className="nav-link"
-                                                            href="apps/e-commerce/landing/cart.html"
-                                                            data-bs-toggle=""
-                                                            aria-expanded="false"
-                                                        >
-                                                            <div className="d-flex align-items-center">
-                                                                <span className="nav-link-text">Cart</span>
-                                                            </div>
-                                                        </a>
-                                                        {/* more inner pages*/}
-                                                    </li>
-                                                    <li className="nav-item">
-                                                        <a
-                                                            className="nav-link"
-                                                            href="apps/e-commerce/landing/checkout.html"
-                                                            data-bs-toggle=""
-                                                            aria-expanded="false"
-                                                        >
-                                                            <div className="d-flex align-items-center">
-                                                                <span className="nav-link-text">Checkout</span>
-                                                            </div>
-                                                        </a>
-                                                        {/* more inner pages*/}
-                                                    </li>
-                                                    <li className="nav-item">
-                                                        <a
-                                                            className="nav-link"
-                                                            href="apps/e-commerce/landing/shipping-info.html"
-                                                            data-bs-toggle=""
-                                                            aria-expanded="false"
-                                                        >
-                                                            <div className="d-flex align-items-center">
-                                                                <span className="nav-link-text">Shipping info</span>
-                                                            </div>
-                                                        </a>
-                                                        {/* more inner pages*/}
-                                                    </li>
-                                                    <li className="nav-item">
-                                                        <a
-                                                            className="nav-link"
-                                                            href="apps/e-commerce/landing/profile.html"
-                                                            data-bs-toggle=""
-                                                            aria-expanded="false"
-                                                        >
-                                                            <div className="d-flex align-items-center">
-                                                                <span className="nav-link-text">Profile</span>
-                                                            </div>
-                                                        </a>
-                                                        {/* more inner pages*/}
-                                                    </li>
-                                                    <li className="nav-item">
-                                                        <a
-                                                            className="nav-link"
-                                                            href="apps/e-commerce/landing/favourite-stores.html"
-                                                            data-bs-toggle=""
-                                                            aria-expanded="false"
-                                                        >
-                                                            <div className="d-flex align-items-center">
-                                                                <span className="nav-link-text">
-                                                                    Favourite stores
-                                                                </span>
-                                                            </div>
-                                                        </a>
-                                                        {/* more inner pages*/}
-                                                    </li>
-                                                    <li className="nav-item">
-                                                        <a
-                                                            className="nav-link"
-                                                            href="apps/e-commerce/landing/wishlist.html"
-                                                            data-bs-toggle=""
-                                                            aria-expanded="false"
-                                                        >
-                                                            <div className="d-flex align-items-center">
-                                                                <span className="nav-link-text">Wishlist</span>
-                                                            </div>
-                                                        </a>
-                                                        {/* more inner pages*/}
-                                                    </li>
-                                                    <li className="nav-item">
-                                                        <a
-                                                            className="nav-link"
-                                                            href="apps/e-commerce/landing/order-tracking.html"
-                                                            data-bs-toggle=""
-                                                            aria-expanded="false"
-                                                        >
-                                                            <div className="d-flex align-items-center">
-                                                                <span className="nav-link-text">
-                                                                    Order tracking
-                                                                </span>
-                                                            </div>
-                                                        </a>
-                                                        {/* more inner pages*/}
-                                                    </li>
-                                                    <li className="nav-item">
-                                                        <a
-                                                            className="nav-link"
-                                                            href="apps/e-commerce/landing/invoice.html"
-                                                            data-bs-toggle=""
-                                                            aria-expanded="false"
-                                                        >
-                                                            <div className="d-flex align-items-center">
-                                                                <span className="nav-link-text">Invoice</span>
-                                                            </div>
-                                                        </a>
-                                                        {/* more inner pages*/}
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
+                                </Link>
+                                
                             </div>
                             {/* parent pages*/}
-                            <div className="nav-item-wrapper">
+                            {/* <div className="nav-item-wrapper">
                                 <a
                                     className="nav-link dropdown-indicator label-1"
                                     href="#CRM"
@@ -454,7 +101,6 @@ function NavbarVertical({ styled }) {
                                                     <span className="nav-link-text">Analytics</span>
                                                 </div>
                                             </a>
-                                            {/* more inner pages*/}
                                         </li>
                                         <li className="nav-item">
                                             <a
@@ -470,7 +116,6 @@ function NavbarVertical({ styled }) {
                                                     </span>
                                                 </div>
                                             </a>
-                                            {/* more inner pages*/}
                                         </li>
                                         <li className="nav-item">
                                             <a
@@ -483,7 +128,6 @@ function NavbarVertical({ styled }) {
                                                     <span className="nav-link-text">Deal details</span>
                                                 </div>
                                             </a>
-                                            {/* more inner pages*/}
                                         </li>
                                         <li className="nav-item">
                                             <a
@@ -496,7 +140,7 @@ function NavbarVertical({ styled }) {
                                                     <span className="nav-link-text">Leads</span>
                                                 </div>
                                             </a>
-                                            {/* more inner pages*/}
+                                            
                                         </li>
                                         <li className="nav-item">
                                             <a
@@ -509,7 +153,7 @@ function NavbarVertical({ styled }) {
                                                     <span className="nav-link-text">Lead details</span>
                                                 </div>
                                             </a>
-                                            {/* more inner pages*/}
+                                            
                                         </li>
                                         <li className="nav-item">
                                             <a
@@ -522,7 +166,7 @@ function NavbarVertical({ styled }) {
                                                     <span className="nav-link-text">Reports</span>
                                                 </div>
                                             </a>
-                                            {/* more inner pages*/}
+                                            
                                         </li>
                                         <li className="nav-item">
                                             <a
@@ -538,7 +182,7 @@ function NavbarVertical({ styled }) {
                                                     </span>
                                                 </div>
                                             </a>
-                                            {/* more inner pages*/}
+                                            
                                         </li>
                                         <li className="nav-item">
                                             <a
@@ -551,13 +195,13 @@ function NavbarVertical({ styled }) {
                                                     <span className="nav-link-text">Add contact</span>
                                                 </div>
                                             </a>
-                                            {/* more inner pages*/}
+                                            
                                         </li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div> */}
                             {/* parent pages*/}
-                            <div className="nav-item-wrapper">
+                            {/* <div className="nav-item-wrapper">
                                 <a
                                     className="nav-link dropdown-indicator label-1"
                                     href="#project-management"
@@ -596,7 +240,7 @@ function NavbarVertical({ styled }) {
                                                     <span className="nav-link-text">Create new</span>
                                                 </div>
                                             </a>
-                                            {/* more inner pages*/}
+                                            
                                         </li>
                                         <li className="nav-item">
                                             <a
@@ -609,7 +253,7 @@ function NavbarVertical({ styled }) {
                                                     <span className="nav-link-text">Project list view</span>
                                                 </div>
                                             </a>
-                                            {/* more inner pages*/}
+                                            
                                         </li>
                                         <li className="nav-item">
                                             <a
@@ -622,7 +266,7 @@ function NavbarVertical({ styled }) {
                                                     <span className="nav-link-text">Project card view</span>
                                                 </div>
                                             </a>
-                                            {/* more inner pages*/}
+                                            
                                         </li>
                                         <li className="nav-item">
                                             <a
@@ -635,7 +279,7 @@ function NavbarVertical({ styled }) {
                                                     <span className="nav-link-text">Project board view</span>
                                                 </div>
                                             </a>
-                                            {/* more inner pages*/}
+                                            
                                         </li>
                                         <li className="nav-item">
                                             <a
@@ -648,7 +292,7 @@ function NavbarVertical({ styled }) {
                                                     <span className="nav-link-text">Todo list</span>
                                                 </div>
                                             </a>
-                                            {/* more inner pages*/}
+                                            
                                         </li>
                                         <li className="nav-item">
                                             <a
@@ -661,15 +305,15 @@ function NavbarVertical({ styled }) {
                                                     <span className="nav-link-text">Project details</span>
                                                 </div>
                                             </a>
-                                            {/* more inner pages*/}
+                                            
                                         </li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div> */}
                             {/* parent pages*/}
 
                             {/* parent pages*/}
-                            <div className="nav-item-wrapper">
+                            {/* <div className="nav-item-wrapper">
                                 <a
                                     className="nav-link dropdown-indicator label-1"
                                     href="#email"
@@ -706,7 +350,7 @@ function NavbarVertical({ styled }) {
                                                     <span className="nav-link-text">Inbox</span>
                                                 </div>
                                             </a>
-                                            {/* more inner pages*/}
+                                            
                                         </li>
                                         <li className="nav-item">
                                             <a
@@ -719,7 +363,7 @@ function NavbarVertical({ styled }) {
                                                     <span className="nav-link-text">Email detail</span>
                                                 </div>
                                             </a>
-                                            {/* more inner pages*/}
+                                            
                                         </li>
                                         <li className="nav-item">
                                             <a
@@ -732,13 +376,13 @@ function NavbarVertical({ styled }) {
                                                     <span className="nav-link-text">Compose</span>
                                                 </div>
                                             </a>
-                                            {/* more inner pages*/}
+                                            
                                         </li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div> */}
                             {/* parent pages*/}
-                            <div className="nav-item-wrapper">
+                            {/* <div className="nav-item-wrapper">
                                 <a
                                     className="nav-link dropdown-indicator label-1"
                                     href="#events"
@@ -775,7 +419,7 @@ function NavbarVertical({ styled }) {
                                                     <span className="nav-link-text">Create an event</span>
                                                 </div>
                                             </a>
-                                            {/* more inner pages*/}
+                                            
                                         </li>
                                         <li className="nav-item">
                                             <a
@@ -788,13 +432,13 @@ function NavbarVertical({ styled }) {
                                                     <span className="nav-link-text">Event detail</span>
                                                 </div>
                                             </a>
-                                            {/* more inner pages*/}
+                                            
                                         </li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div> */}
                             {/* parent pages*/}
-                            <div className="nav-item-wrapper">
+                            {/* <div className="nav-item-wrapper">
                                 <a
                                     className="nav-link dropdown-indicator label-1"
                                     href="#kanban"
@@ -835,7 +479,7 @@ function NavbarVertical({ styled }) {
                                                     <span className="nav-link-text">Kanban</span>
                                                 </div>
                                             </a>
-                                            {/* more inner pages*/}
+                                            
                                         </li>
                                         <li className="nav-item">
                                             <a
@@ -851,7 +495,7 @@ function NavbarVertical({ styled }) {
                                                     </span>
                                                 </div>
                                             </a>
-                                            {/* more inner pages*/}
+                                            
                                         </li>
                                         <li className="nav-item">
                                             <a
@@ -864,13 +508,13 @@ function NavbarVertical({ styled }) {
                                                     <span className="nav-link-text">Create board</span>
                                                 </div>
                                             </a>
-                                            {/* more inner pages*/}
+                                            
                                         </li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div> */}
                             {/* parent pages*/}
-                            <div className="nav-item-wrapper">
+                            {/* <div className="nav-item-wrapper">
                                 <a
                                     className="nav-link dropdown-indicator label-1"
                                     href="#social"
@@ -907,7 +551,7 @@ function NavbarVertical({ styled }) {
                                                     <span className="nav-link-text">Profile</span>
                                                 </div>
                                             </a>
-                                            {/* more inner pages*/}
+                                            
                                         </li>
                                         <li className="nav-item">
                                             <a
@@ -920,13 +564,13 @@ function NavbarVertical({ styled }) {
                                                     <span className="nav-link-text">Settings</span>
                                                 </div>
                                             </a>
-                                            {/* more inner pages*/}
+                                            
                                         </li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div> */}
                             {/* parent pages*/}
-                            <div className="nav-item-wrapper">
+                            {/* <div className="nav-item-wrapper">
                                 <a
                                     className="nav-link label-1"
                                     href="apps/calendar.html"
@@ -943,7 +587,7 @@ function NavbarVertical({ styled }) {
                                         </span>
                                     </div>
                                 </a>
-                            </div>
+                            </div> */}
                         </li>
 
                     </ul>

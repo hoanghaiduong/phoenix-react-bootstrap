@@ -34724,7 +34724,7 @@ html:not(.navbar-vertical-collapsed)
   .theme-wizard
     .nav-item:not(.theme-wizard .nav-item:last-child)
     .nav-link:before {
-    top: 35%;
+    /* top: 35%; */
   }
 }
 .theme-wizard

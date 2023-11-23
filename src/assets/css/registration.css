@@ -1,0 +1,88 @@
+.registration{
+    display: flex;
+    width: 480px;
+    padding: 32px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background: var(--zinc-0, #FFF);
+    font-family: Arial, Helvetica, sans-serif;
+    flex-direction: column;
+}
+
+.registration-title
+{
+    display: flex;
+    width: 416px;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+.registration-title h1 {
+    color: var(--zinc-800, #27272A);
+    font-family: Poppins;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.registration-title h3{
+    align-self: stretch;
+    color: var(--zinc-350, #C8C8D0);
+    text-align: center;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.registration-step{
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 32px;
+    position: relative;
+}
+
+.registration-step hr{
+    width: 416px;
+    height: 2px;
+    background: #D4D4D8;
+    margin-top: 57px;
+}
+.registration-step-1{
+    position: absolute;
+    top: 42px;
+    left: 76px;
+}
+.registration-step-1-child
+{
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+.registration-step-1-child span{
+    position: absolute;
+    top: 6px;
+    left: 11px;
+    color: white;
+}
+.registration-step-1 svg{
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    fill: var(--pastel-purple-500, #B991FF);
+    stroke-width: 1px;
+    stroke: var(--pastel-purple-500, #B991FF);
+}
+.registration-step-1-child-content{
+    color: var(--zinc-350, #C8C8D0);
+    text-align: center;
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    font-family: Arial, Helvetica, sans-serif;
+}

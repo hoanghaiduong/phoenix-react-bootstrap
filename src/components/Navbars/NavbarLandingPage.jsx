@@ -14,8 +14,8 @@ function NavbarLandingPage() {
                 <nav className="navbar navbar-expand-lg container-small px-3 px-lg-7 px-xxl-3">
                     <Link className="navbar-brand flex-1 flex-lg-grow-0" to={"/"}>
                         <div className="d-flex align-items-center">
-                            <img src="../../assets/img/icons/logo.png" alt="phoenix" width={27} />
-                            <p className="logo-text ms-2">phoenix</p>
+                            <img src="../../assets/img/logos/logorestart-removebg-preview2.png" alt="" width={167} />
+                            <p className="logo-text ms-2"></p>
                         </div>
                     </Link>
                     <div className="d-lg-none">
@@ -59,22 +59,22 @@ function NavbarLandingPage() {
                                     aria-current="page"
                                     to="#"
                                 >
-                                    Home
+                                    Trang chủ
                                 </Link>
                             </li>
-                            <li className="nav-item border-bottom border-bottom-lg-0">
+                            {/* <li className="nav-item border-bottom border-bottom-lg-0">
                                 <Link className="nav-link lh-1 py-0 fs--1 fw-bold py-3" to="#feature">
                                     Features
                                 </Link>
-                            </li>
+                            </li> */}
                             <li className="nav-item border-bottom border-bottom-lg-0">
                                 <Link className="nav-link lh-1 py-0 fs--1 fw-bold py-3" to="#blog">
-                                    Blog
+                                    Nhà hàng
                                 </Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link lh-1 py-0 fs--1 fw-bold py-3" to="#team">
-                                    Team
+                                    Nhóm
                                 </Link>
                             </li>
                         </ul>

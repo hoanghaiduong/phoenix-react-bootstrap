@@ -17,21 +17,18 @@ function LandingPage() {
                         <div className="row align-items-center">
                             <div className="col-12 col-lg-6 pt-8 pb-6 position-relative z-index-5 text-center text-lg-start">
                                 <h1 className="fs-5 fs-md-6 fs-xl-7 fw-black mb-4">
-                                    <span className="text-gradient-info me-3">Elegance</span>for
-                                    <br />
-                                    your web app
+                                    <span className="text-gradient-info me-3">Restart</span>cho nhà hàng của bạn
                                 </h1>
                                 <p className="mb-5 pe-xl-10">
-                                    Standard, modern and Elegant solution for your next web app so you
-                                    don’t have to look further. Sign up or check the demo below.
+                                Hãy sử dụng dịch vụ của chúng tôi để quản lý nhà hàng của bạn.
                                 </p>
-                                <a
+                                <Link
                                     className="btn btn-lg btn-primary rounded-pill me-3"
-                                    href="#!"
+                                    to="/auth/signup"
                                     role="button"
                                 >
-                                    Sign up
-                                </a>
+                                    Đăng ký ngay
+                                </Link>
 
                             </div>
                             <div className="col-12 col-lg-auto d-none d-lg-block">
@@ -48,7 +45,7 @@ function LandingPage() {
                                         />
                                         <img
                                             className="w-100 d-dark-none rounded-2 hero-image-shadow"
-                                            src="../../assets/img/bg/bg-34.png"
+                                            src="../../assets/img/bg/bg.jpg"
                                             alt="hero-header"
                                         />
                                         <img

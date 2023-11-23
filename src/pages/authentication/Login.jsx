@@ -1,10 +1,46 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import AuthLayout from '../layout/AuthLayout'
 import AuthLeftCard from '../../components/Authentication/AuthLeftCard'
 import AuthRightCard from '../../components/Authentication/AuthRightCard'
 import DividerWithTitle from '../../components/common/Divided'
-
+import { useAuth } from '../../context/AuthContext'
+import { useToasts } from 'react-toast-notifications';
+import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux';
+import { setUserInfoAction } from '../../redux/Actions';
 function SignIn() {
+    const { addToast } = useToasts()
+    const [email , setEmail] = useState('')
+    const [password , setPassword] = useState('')
+    
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    // const {userInfo} = useSelector(state => state);
+    // console.log(userInfo.accessToken)
+    
+    const { login, createOrLogin } = useAuth();
+    const handleGoogleSignIn =async () => {
+        await login(email, password).then((result) => {
+            console.log(result.user);
+            createOrLogin(result.user.accessToken, navigate)
+            dispatch(setUserInfoAction({
+                displayName: result.user.displayName,
+                accessToken: result.user.accessToken,
+                photoURL: result.user.photoURL
+            }));
+            addToast("Đăng nhập thành công", {
+                appearance: 'success',
+                autoDismiss: true,
+              })
+          }).catch(error => {
+            console.log(error.message)
+            addToast(error.message, {
+                appearance: 'error',
+                autoDismiss: true,
+              })
+          })
+    };
+    
     return (
         <AuthLayout backgroundImageURL={`url(../../../assets/img/bg/37.png)`}>
             <AuthLeftCard
@@ -20,7 +56,7 @@ function SignIn() {
             <AuthRightCard
                 title={"Đăng Nhập"}
                 description={"Điền vào biểu mẫu để đăng nhập tài khoản"}
-                imgSrc={"../../../assets/img/icons/logo.png"}
+                imgSrc={"../../../assets/img/logos/logorestart-removebg-preview2.png"}
             >
                 <DividerWithTitle title={"Hoặc với Email"} classBgColor={"bg-white"} />
                 <div className="mb-3 text-start">
@@ -33,6 +69,8 @@ function SignIn() {
                             id="email"
                             type="email"
                             placeholder="name@example.com"
+                            onChange={e => setEmail(e.target.value)}
+                            value={email}
                         />
                         <span className="fas fa-user text-900 fs--1 form-icon" />
                     </div>
@@ -47,6 +85,8 @@ function SignIn() {
                             id="password"
                             type="password"
                             placeholder="Password"
+                            onChange={e => setPassword(e.target.value)}
+                            value={password}
                         />
                         <span className="fas fa-key text-900 fs--1 form-icon" />
                     </div>
@@ -77,11 +117,11 @@ function SignIn() {
                         </a>
                     </div>
                 </div>
-                <button className="btn btn-primary w-100 mb-3">Sign In</button>
+                <button className="btn btn-primary w-100 mb-3" onClick={handleGoogleSignIn}>Đăng nhập</button>
                 <div className="text-center">
-                    <a className="fs--1 fw-bold" href="sign-up.html">
-                        Create an account
-                    </a>
+                    <Link className="fs--1 fw-bold" to="/auth/signup">
+                        Tạo tài khoản
+                    </Link>
                 </div>
             </AuthRightCard>
         </AuthLayout>
