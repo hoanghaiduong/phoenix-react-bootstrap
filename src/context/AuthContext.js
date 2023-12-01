@@ -83,7 +83,7 @@ export default function AuthContextProvider({ children }) {
           navigate("/restaurant/management")
           return
         case "user":
-          navigate("/")
+          navigate("/home-page")
           return
       }
       // if(response.data.role.name == "admin")

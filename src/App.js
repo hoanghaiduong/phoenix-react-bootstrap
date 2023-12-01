@@ -10,7 +10,6 @@ import {
   Routes,
 } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
-import About from "./pages/restaurant/CreateRestaurant";
 import SignIn from "./pages/authentication/Login";
 import Register from "./pages/authentication/Register";
 import NotFoundPage from "./components/NotFound";
@@ -21,9 +20,11 @@ import RegistrationForm from "./pages/authentication/RegistrationForm";
 import MapDefault from "./pages/map/MapDefault";
 import UsersList from "./pages/admin/Users/UserList"
 import CreateRestaurant from "./pages/restaurant/CreateRestaurant";
-import TypeOfBusiness from "./pages/restaurant/TypeOfBusiness";
-import BasicInfo from "./pages/restaurant/BasicInfo";
 import RestaurantList from "./pages/admin/Restaurants/RestaurantList";
+import FormRegister from "./pages/restaurant/FormRegister";
+import Products from "./pages/restaurant/Products";
+import HomePage from "./pages/user/HomePage";
+import RestaurantDetails from "./pages/user/RestaurantDetails";
 const App = () => {
   const { phoenixTheme } = useSelector((state) => state);
   useEffect(() => {
@@ -47,15 +48,17 @@ const App = () => {
         <Route path="contact" element={<Contact />} />
         <Route path="map" element={<MapDefault />} />
         <Route path="about" element={<AboutUs />} />
-        <Route path="admin" children={<CreateRestaurant />}>
+        <Route path="admin" children={<UsersList />}>
           <Route path="user" element={<UsersList />} />
           <Route path="restaurant" element={<RestaurantList />} />
         </Route>
         <Route path="restaurant" children={<CreateRestaurant />}>
           <Route path="management" element={<CreateRestaurant />} />
-          {/* <Route path="type-of-business" element={<TypeOfBusiness />} /> */}
-          <Route path="basic-info" element={<BasicInfo />} />
+          <Route path="basic-info" element={<FormRegister />} />
+          <Route path="products/:id" element={<Products />} />
         </Route>
+        <Route path="home-page" element={<HomePage />} />
+        <Route path="restaurant-detail/:id" element={<RestaurantDetails />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>

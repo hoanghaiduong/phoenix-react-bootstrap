@@ -1,0 +1,7 @@
+.deal-container{
+    padding: 30px 150px !important;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
